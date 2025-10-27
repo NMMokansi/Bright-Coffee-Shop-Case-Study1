@@ -1,58 +1,68 @@
-----Exploratory Data Analysis EDA
+# Coffee-Shop-Sales-Analysis
 
--------Categorical data
---1. Checking number of coffee store
+This project focuses on creating 
+insightful vituals using Excel for Bright 
+Coffee Shop revenue analysis. These 
+visuals brings key performance 
+indicators to essential business metrics 
+that will help cultivate more impactful 
+decision making across 3 coffee shop branches.
 
-SELECT DISTINCT store_location
-FROM BRIGHT_LEARN_COFFEE_SHOP.CSHOP.BRIGHTLEARNCOFFEESHOP;
+---
 
---2. Check number of product_category
-SELECT DISTINCT PRODUCT_CATEGORY
-FROM BRIGHT_LEARN_COFFEE_SHOP.CSHOP.BRIGHTLEARNCOFFEESHOP;
+## 📊 Summary of Findings
 
---3. Checking number of product type
-SELECT DISTINCT product_type
-FROM BRIGHT_LEARN_COFFEE_SHOP.CSHOP.BRIGHTLEARNCOFFEESHOP;
+Total Revenue 
+The total revenue generated since the launch of the coffee shop from January - June 2023 has amounted to 
+R698 812,33.
 
------ Date_and_Time Functions
+### 🗓️  Total Sales by Month
+Revenue was increasing gradually towards the winter season.
+May and June months are the peak of our revenue.
+More revenue was generated during the month of June
 
---Check the earliest transaction_date
-SELECT MIN(Transaction_date) AS First_Operating_date
-FROM BRIGHT_LEARN_COFFEE_SHOP.CSHOP.BRIGHTLEARNCOFFEESHOP;
+### Weekly Revenue by Store Location
+ Saturdays are the less busy days.
+ Lower Manhattan is the least performing store.
+ Astoria is mid performing store.
 
---Check latest transaction date
-SELECT MAX(Transaction_date) AS Last_Operating_date
-FROM BRIGHT_LEARN_COFFEE_SHOP.CSHOP.BRIGHTLEARNCOFFEESHOP
+### Montly total sales by Time Category/buckets
+ We generate most of the revenue in the mornings across all months.
+ The most revenue towards winter with June being the highest.
 
---Check day name
+### ☕ Product Contribution
+- Coffee & Tea products account for **67%** of total revenue.
+- Other items (e.g., pastries, snacks) make up the remaining 33%.
 
-SELECT Transaction_date,
-       DAYNAME(Transaction_date) AS Day_name,
- -----Clasifying date into buckets for clear analysis on the graphs using CASE statements     
-       CASE
-           WHEN DAYNAME(Transaction_date) IN ('Sat','Sun') THEN 'Weekend'
-           ELSE  'Weekday'
-       END AS Day_Classification,
-------Check month_name from the date  
-       MONTHNAME(Transaction_date) AS Month_name,
------Clasifying time into buckets for clear analysis on the graphs using CASE statements     
-       
-       Transaction_time,
-       CASE 
-          WHEN transaction_time BETWEEN '06:00:00' AND '11:59:00' THEN 'Morning'
-          WHEN transaction_time BETWEEN '12:00:00' AND '16:59:00' THEN 'Afternoon'
-          WHEN transaction_time >= '17:00:00' THEN 'Evening'
-       END AS Time_category,
--------Check hour from the date
-       HOUR(Transaction_time) AS Hour_of_day,
-       store_location,
-       product_category,
-       product_detail,
-       product_type,
--------Check number of sales
-       COUNT (DISTINCT TRANSACTION_ID) AS Number_of_Sales,
------Calculate Revenue
-      SUM(transaction_qty * unit_price) AS Revenue
-FROM BRIGHT_LEARN_COFFEE_SHOP.CSHOP.BRIGHTLEARNCOFFEESHOP
-GROUP BY ALL;
+Total sales by Store Location
+Hell’s Kitchen contributed most towards the grand total Revenue by 33,84% 
+with Astoria coming second at 33,23% and lastly Manhattan at 32,92%
 
+### Overall Analysis
+The coffee shop industry in one of the most 
+difficult businesses to turn a consistent profit in. 
+Costs are high, margins are narrow, and 
+competition is constant. It appears that the 
+coffee shops are doing pretty well towards the 
+winter seasons which makes sense as the 
+weather is usually cold and that is the time were 
+people appreciate warm bevarages.
+
+### Recommendations to Boost Sales
+
+  To keep the revenue increase across all seasons, 
+    we can develop a high-margin breakfast 
+    offering.
+  Breakfast is one of the most cost-effective 
+    categories in food service. Items like muffins 
+    croissants, egg sandwiches, and bagels are 
+    inexpensive to produce and pair well with 
+    coffee. They require relatively simple preparation 
+    and can be sold at a strong mark.
+
+## 🛠️ Tools & Technologies
+
+- SQL (Standard)
+- Snowflake Cloud Platform
+- MS Excel
+- Powerpoint
